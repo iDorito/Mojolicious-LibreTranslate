@@ -1,0 +1,39 @@
+% layout 'default';
+% title 'Traductor Mojolicious';
+
+<div class="container">
+    <h1>Traductor de Texto</h1>
+    <form method="POST" action="<%= url_for('do_translation') %>">
+        <div class="translation-area">
+            <div>
+                <label for="source_text">Texto a Traducir (Italiano):</label>
+                <textarea id="source_text" name="source_text"><%= $source_text %></textarea>
+
+                <label for="source_lang">Idioma de Origen:</label>
+                <select id="source_lang" name="source_lang">
+                    % foreach my $code (keys %$source_langs) {
+                        <option value="<%= $code %>" <%= $selected_source_lang eq $code ? 'selected' : '' %>>
+                            <%= $source_langs->{$code} %>
+                        </option>
+                    % }
+                </select>
+
+                <label for="target_lang">Traducir a:</label>
+                <select id="target_lang" name="target_lang">
+                    % foreach my $code (keys %$target_langs) {
+                        <option value="<%= $code %>" <%= $selected_target_lang eq $code ? 'selected' : '' %>>
+                            <%= $target_langs->{$code} %>
+                        </option>
+                    % }
+                </select>
+
+                <input type="submit" value="Traducir">
+            </div>
+
+            <div>
+                <label for="translated_text">Texto Traducido:</label>
+                <textarea id="translated_text" name="translated_text" class="result-box" readonly><%= $translated_text %></textarea>
+            </div>
+        </div>
+    </form>
+</div>
