@@ -4,6 +4,10 @@ This project provides step-by-step instructions to set up a LibreTranslate virtu
 
 This is a testing web with the basics for a translation from italian to 4 more languages.
 
+# Run:
+
+1. perl start_server.pl
+
 # Steps
 
 ## VM Setup
